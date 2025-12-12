@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background: #f5f7fa;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 230px;
+            height: 100vh;
+            background: #fff;
+            border-right: 1px solid #e1e1e1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 15px;
+        }
+
+        .menu-item {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: #333;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        .menu-item i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .menu-item:hover,
+        .menu-item.active {
+            background: #e9f4ff;
+            color: #0d6efd;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        /* Hide pages */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Dashboard card */
+        .stat-card {
+            padding: 20px;
+            border-radius: 12px;
+            background: white;
+            border: 1px solid #eee;
+            transition: 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.07);
+        }
+
+        /* Admin avatar button */
+        .admin-btn {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .admin-btn img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .user-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .table thead {
+            background: #f1f5f9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ======================== -->
+    <!-- SIDEBAR -->
+    <!-- ======================== -->
+    <div class="sidebar">
+
+        <div class="text-center mb-4">
+            <img src="https://i.imgur.com/5cX1GxC.png" width="55">
+            <h6 class="fw-bold mt-2">Admin Panel</h6>
+        </div>
+
+        <div class="menu-item active" onclick="showPage('dashboard', this)">
+            <i class="bi bi-speedometer2"></i> Dashboard
+        </div>
+
+        <div class="menu-item" onclick="showPage('users', this)">
+            <i class="bi bi-people"></i> Quản lý người dùng
+        </div>
+
+        <div class="menu-item" onclick="showPage('violations', this)">
+            <i class="bi bi-list-check"></i> Danh sách vi phạm
+        </div>
+
+        <div class="menu-item">
+            <i class="bi bi-file-earmark-bar-graph"></i> Báo cáo
+        </div>
+
+        <div class="menu-item">
+            <i class="bi bi-gear"></i> Cài đặt
+        </div>
+    </div>
+
+
+
+    <!-- ======================== -->
+    <!-- MAIN CONTENT -->
+    <!-- ======================== -->
+    <div class="content">
+
+        <!-- ======================== -->
+        <!-- NAVBAR -->
+        <!-- ======================== -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h3 class="fw-bold">Hệ thống quản lý vi phạm</h3>
+
+            <div class="d-flex align-items-center">
+
+                <button class="btn btn-success me-2">
+                    <i class="bi bi-download"></i> Xuất báo cáo
+                </button>
+
+                <button class="btn btn-outline-secondary me-3">
+                    <i class="bi bi-clock-history"></i> Hôm nay
+                </button>
+
+                <!-- Admin profile -->
+                <div class="dropdown">
+                    <button class="admin-btn dropdown-toggle" data-bs-toggle="dropdown">
+                        <img src="https://i.pravatar.cc/150?img=32">
+                        <div>
+                            <div class="fw-bold">Admin</div>
+                            <div class="text-muted small">Quản trị viên</div>
+                        </div>
+                        <i class="bi bi-chevron-down ms-2 text-muted"></i>
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-circle me-2"></i> Hồ sơ</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-lock me-2"></i> Đổi mật khẩu</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="#" onclick="logout()"><i
+                                    class="bi bi-box-arrow-right me-2"></i> Đăng xuất</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- ======================== -->
+        <!-- DASHBOARD -->
+        <!-- ======================== -->
+        <div id="dashboard" class="page active">
+
+            <div class="row g-3">
+
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h6 class="text-secondary">Tổng người dùng</h6>
+                        <h3 class="fw-bold">1,245</h3>
+                        <span class="text-success">+12% tuần trước</span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h6 class="text-secondary">Vi phạm hôm nay</h6>
+                        <h3 class="fw-bold">23</h3>
+                        <span class="text-success">+5% tuần trước</span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h6 class="text-secondary">Đã xử lý</h6>
+                        <h3 class="fw-bold">186</h3>
+                        <span class="text-success">+18% tuần trước</span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h6 class="text-secondary">Chờ xử lý</h6>
+                        <h3 class="fw-bold">37</h3>
+                        <span class="text-danger">-8% tuần trước</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- ======================== -->
+        <!-- QUẢN LÝ NGƯỜI DÙNG -->
+        <!-- ======================== -->
+        <div id="users" class="page">
+
+            <h4 class="fw-bold mb-3">Quản lý người dùng</h4>
+
+            <div class="card shadow-sm p-3">
+
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Người dùng</th>
+                            <th>Email</th>
+                            <th>Mã xe</th>
+                            <th>Vai trò</th>
+                            <th>Trạng thái</th>
+                            <th class="text-center">Hành động</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><img src="https://i.pravatar.cc/40?img=13" class="user-img"> Nguyễn Văn An</td>
+                            <td>an@gmail.com</td>
+                            <td>XE001234</td>
+                            <td><span class="badge bg-primary">Sinh viên</span></td>
+                            <td><span class="badge bg-success">Hoạt động</span></td>
+
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i
+                                        class="bi bi-shield-lock"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-warning me-1" title="Cấp lại mật khẩu">
+                                    <i class="bi bi-key"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td><img src="https://i.pravatar.cc/40?img=18" class="user-img"> Trần Thị Hương</td>
+                            <td>huong@gmail.com</td>
+                            <td>XM55890</td>
+                            <td><span class="badge bg-warning">Cờ đỏ</span></td>
+                            <td><span class="badge bg-secondary">Tạm khóa</span></td>
+
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i
+                                        class="bi bi-shield-lock"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-warning me-1" title="Cấp lại mật khẩu">
+                                    <i class="bi bi-key"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+
+        <!-- ======================== -->
+        <!-- DANH SÁCH VI PHẠM -->
+        <!-- ======================== -->
+        <div id="violations" class="page">
+
+            <h4 class="fw-bold mb-3">Danh sách vi phạm</h4>
+
+            <div class="card shadow-sm p-3">
+
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Mã xe</th>
+                            <th>Chủ xe</th>
+                            <th>Loại xe</th>
+                            <th>Loại vi phạm</th>
+                            <th>Cờ đỏ ghi nhận</th>
+                            <th>Thời gian</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>1</td>
+                            <td>29A-12345</td>
+                            <td>Trần Văn Bình</td>
+                            <td><span class="badge bg-info text-dark">Xe máy</span></td>
+                            <td><span class="badge bg-danger">Vượt đèn đỏ</span></td>
+                            <td><span class="">Nguyễn Văn A</span></td>
+                            <td>15/12/2024 14:30</td>
+                            <td><button class="btn btn-sm btn-outline-info me-1" title="Sửa thông tin">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>30B-67890</td>
+                            <td>Nguyễn Thị Lan</td>
+                            <td><span class="badge bg-info text-dark">Ô tô</span></td>
+                            <td><span class="badge bg-danger">Quá tốc độ</span></td>
+                            <td><span class="">lê Thị B</span></td>
+                            <td>15/12/2024 13:15</td>
+                            <td><button class="btn btn-sm btn-outline-info me-1" title="Sửa thông tin">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                            </td>
+
+
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- =============================== -->
+    <!-- Bootstrap JS (bắt buộc để dropdown hoạt động) -->
+    <!-- =============================== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function showPage(page, menuItem) {
+            document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+            document.getElementById(page).classList.add("active");
+
+            document.querySelectorAll(".menu-item").forEach(m => m.classList.remove("active"));
+            menuItem.classList.add("active");
+        }
+
+        function logout() {
+            alert("Đăng xuất thành công");
+        }
+    </script>
+
+</body>
+
+</html>
