@@ -242,8 +242,15 @@
         <!-- ======================== -->
         <div id="users" class="page">
 
-            <h4 class="fw-bold mb-3">Quản lý người dùng</h4>
 
+            <h4 class="fw-bold mb-3">Quản lý người dùng</h4>
+            <!-- Tìm kiếm người dùng -->
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <input type="text" id="searchUser" class="form-control" placeholder="🔍 Tìm theo tên người dùng..."
+                        onkeyup="filterUsers()">
+                </div>
+            </div>
             <div class="card shadow-sm p-3">
 
                 <table class="table table-hover align-middle">
@@ -259,45 +266,190 @@
                         </tr>
                     </thead>
 
-                    <tbody>
-                        <tr>
+                    <tbody id="userTable">
+
+                        <tr data-name="Nguyễn Văn An">
                             <td>1</td>
                             <td><img src="https://i.pravatar.cc/40?img=13" class="user-img"> Nguyễn Văn An</td>
                             <td>an@gmail.com</td>
                             <td>XE001234</td>
-                            <td><span class="badge bg-primary">Sinh viên</span></td>
+                            <td><span class="badge bg-primary">Học sinh</span></td>
                             <td><span class="badge bg-success">Hoạt động</span></td>
-
                             <td class="text-center">
                                 <button class="btn btn-sm btn-outline-primary"><i
                                         class="bi bi-shield-lock"></i></button>
                                 <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                                <button class="btn btn-sm btn-outline-warning me-1" title="Cấp lại mật khẩu">
-                                    <i class="bi bi-key"></i>
-                                </button>
+                                <button class="btn btn-sm btn-outline-warning me-1"><i class="bi bi-key"></i></button>
                             </td>
                         </tr>
 
-                        <tr>
+                        <tr data-name="Trần Thị Hương">
                             <td>2</td>
                             <td><img src="https://i.pravatar.cc/40?img=18" class="user-img"> Trần Thị Hương</td>
                             <td>huong@gmail.com</td>
                             <td>XM55890</td>
                             <td><span class="badge bg-warning">Cờ đỏ</span></td>
                             <td><span class="badge bg-secondary">Tạm khóa</span></td>
-
                             <td class="text-center">
                                 <button class="btn btn-sm btn-outline-primary"><i
                                         class="bi bi-shield-lock"></i></button>
                                 <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                                <button class="btn btn-sm btn-outline-warning me-1" title="Cấp lại mật khẩu">
-                                    <i class="bi bi-key"></i>
-                                </button>
+                                <button class="btn btn-sm btn-outline-warning me-1"><i class="bi bi-key"></i></button>
+                            </td>
+                        </tr>
 
+                        <tr data-name="Lê Minh Tuấn">
+                            <td>3</td>
+                            <td><img src="https://i.pravatar.cc/40?img=21" class="user-img"> Lê Minh Tuấn</td>
+                            <td>tuan@gmail.com</td>
+                            <td>XD102345</td>
+                            <td><span class="badge bg-primary">Học sinh</span></td>
+                            <td><span class="badge bg-success">Hoạt động</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i
+                                        class="bi bi-shield-lock"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-warning me-1"><i class="bi bi-key"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr data-name="Phạm Quốc Huy">
+                            <td>4</td>
+                            <td><img src="https://i.pravatar.cc/40?img=22" class="user-img"> Phạm Quốc Huy</td>
+                            <td>huy@gmail.com</td>
+                            <td>XD204589</td>
+                            <td><span class="badge bg-primary">Học sinh</span></td>
+                            <td><span class="badge bg-success">Hoạt động</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i
+                                        class="bi bi-shield-lock"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-warning me-1"><i class="bi bi-key"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr data-name="Nguyễn Thị Mai">
+                            <td>5</td>
+                            <td><img src="https://i.pravatar.cc/40?img=23" class="user-img"> Nguyễn Thị Mai</td>
+                            <td>mai@gmail.com</td>
+                            <td>XD889012</td>
+                            <td><span class="badge bg-primary">Học sinh</span></td>
+                            <td><span class="badge bg-success">Hoạt động</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i
+                                        class="bi bi-shield-lock"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-warning me-1"><i class="bi bi-key"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr data-name="Võ Thanh Tùng">
+                            <td>6</td>
+                            <td><img src="https://i.pravatar.cc/40?img=24" class="user-img"> Võ Thanh Tùng</td>
+                            <td>tung@gmail.com</td>
+                            <td>XD771234</td>
+                            <td><span class="badge bg-warning">Cờ đỏ</span></td>
+                            <td><span class="badge bg-success">Hoạt động</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i
+                                        class="bi bi-shield-lock"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-warning me-1"><i class="bi bi-key"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr data-name="Đặng Thị Hòa">
+                            <td>7</td>
+                            <td><img src="https://i.pravatar.cc/40?img=25" class="user-img"> Đặng Thị Hòa</td>
+                            <td>hoa@gmail.com</td>
+                            <td>XD330011</td>
+                            <td><span class="badge bg-primary">Học sinh</span></td>
+                            <td><span class="badge bg-secondary">Tạm khóa</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i
+                                        class="bi bi-shield-lock"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-warning me-1"><i class="bi bi-key"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr data-name="Nguyễn Hoàng Long">
+                            <td>8</td>
+                            <td><img src="https://i.pravatar.cc/40?img=26" class="user-img"> Nguyễn Hoàng Long</td>
+                            <td>long@gmail.com</td>
+                            <td>XD998877</td>
+                            <td><span class="badge bg-warning">Cờ đỏ</span></td>
+                            <td><span class="badge bg-success">Hoạt động</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i
+                                        class="bi bi-shield-lock"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-warning me-1"><i class="bi bi-key"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr data-name="Trần Nhật Minh">
+                            <td>9</td>
+                            <td><img src="https://i.pravatar.cc/40?img=27" class="user-img"> Trần Nhật Minh</td>
+                            <td>minh@gmail.com</td>
+                            <td>XD665544</td>
+                            <td><span class="badge bg-primary">Học sinh</span></td>
+                            <td><span class="badge bg-success">Hoạt động</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i
+                                        class="bi bi-shield-lock"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-warning me-1"><i class="bi bi-key"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr data-name="Lê Thị Ngọc">
+                            <td>10</td>
+                            <td><img src="https://i.pravatar.cc/40?img=28" class="user-img"> Lê Thị Ngọc</td>
+                            <td>ngoc@gmail.com</td>
+                            <td>XD442211</td>
+                            <td><span class="badge bg-primary">Học sinh</span></td>
+                            <td><span class="badge bg-success">Hoạt động</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i
+                                        class="bi bi-shield-lock"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-warning me-1"><i class="bi bi-key"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr data-name="Phan Văn Khoa">
+                            <td>11</td>
+                            <td><img src="https://i.pravatar.cc/40?img=29" class="user-img"> Phan Văn Khoa</td>
+                            <td>khoa@gmail.com</td>
+                            <td>XD556677</td>
+                            <td><span class="badge bg-primary">Học sinh</span></td>
+                            <td><span class="badge bg-secondary">Tạm khóa</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i
+                                        class="bi bi-shield-lock"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-warning me-1"><i class="bi bi-key"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr data-name="Bùi Thị Ánh">
+                            <td>12</td>
+                            <td><img src="https://i.pravatar.cc/40?img=30" class="user-img"> Bùi Thị Ánh</td>
+                            <td>anh@gmail.com</td>
+                            <td>XD123789</td>
+                            <td><span class="badge bg-warning">Cờ đỏ</span></td>
+                            <td><span class="badge bg-success">Hoạt động</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i
+                                        class="bi bi-shield-lock"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-warning me-1"><i class="bi bi-key"></i></button>
                             </td>
                         </tr>
 
                     </tbody>
+
                 </table>
 
             </div>
@@ -313,6 +465,52 @@
             <h4 class="fw-bold mb-3">Danh sách vi phạm</h4>
 
             <div class="card shadow-sm p-3">
+                <!-- Bộ lọc -->
+                <div class="row mb-3 g-2">
+
+                    <div class="col-md-3">
+                        <input type="text" id="filterName" class="form-control" placeholder="🔍 Tên học sinh..."
+                            onkeyup="filterViolations()">
+                    </div>
+
+                    <div class="col-md-2">
+                        <select id="filterClass" class="form-select" onchange="filterViolations()">
+                            <option value="">🏫 Tất cả lớp</option>
+                            <option value="10A1">10A1</option>
+                            <option value="10A2">10A2</option>
+                            <option value="11B1">11B1</option>
+                            <option value="11B2">11B2</option>
+                            <option value="12C1">12C1</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <select id="filterRedFlag" class="form-select" onchange="filterViolations()">
+                            <option value="">👮 Tất cả cờ đỏ</option>
+                            <option value="Nguyễn Văn A">Nguyễn Văn A</option>
+                            <option value="Lê Thị B">Lê Thị B</option>
+                            <option value="Trần Thị Hương">Trần Thị Hương</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="date" id="fromDate" class="form-control" onchange="filterViolations()"
+                            title="Từ ngày">
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="date" id="toDate" class="form-control" onchange="filterViolations()"
+                            title="Đến ngày">
+                    </div>
+
+                    <div class="col-md-1">
+                        <button class="btn btn-secondary w-100" onclick="resetFilter()">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                    </div>
+
+                </div>
+
 
                 <table class="table table-hover align-middle">
                     <thead>
@@ -320,6 +518,7 @@
                             <th>#</th>
                             <th>Mã xe</th>
                             <th>Chủ xe</th>
+                            <th>Lớp</th>
                             <th>Loại xe</th>
                             <th>Loại vi phạm</th>
                             <th>Cờ đỏ ghi nhận</th>
@@ -328,42 +527,86 @@
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody id="violationTable">
 
-                        <tr>
+                        <tr data-name="Trần Văn Bình" data-class="10A1">
                             <td>1</td>
                             <td>29A-12345</td>
                             <td>Trần Văn Bình</td>
-                            <td><span class="badge bg-info text-dark">Xe máy</span></td>
-                            <td><span class="badge bg-danger">Vượt đèn đỏ</span></td>
-                            <td><span class="">Nguyễn Văn A</span></td>
-                            <td>15/12/2024 14:30</td>
-                            <td><button class="btn btn-sm btn-outline-info me-1" title="Sửa thông tin">
-                                    <i class="bi bi-pencil-square"></i>
-                                </button>
+                            <td>10A1</td>
+                            <td><span class="badge bg-info text-dark">Xe đạp</span></td>
+                            <td><span class="badge bg-danger">Đi sai làn</span></td>
+                            <td>Nguyễn Văn A</td>
+                            <td>15/12/2025 14:30</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-info"><i class="bi bi-pencil"></i></button>
                                 <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
                             </td>
-
                         </tr>
 
-                        <tr>
+                        <tr data-name="Nguyễn Thị Lan" data-class="10A2">
                             <td>2</td>
                             <td>30B-67890</td>
                             <td>Nguyễn Thị Lan</td>
-                            <td><span class="badge bg-info text-dark">Ô tô</span></td>
-                            <td><span class="badge bg-danger">Quá tốc độ</span></td>
-                            <td><span class="">lê Thị B</span></td>
-                            <td>15/12/2024 13:15</td>
-                            <td><button class="btn btn-sm btn-outline-info me-1" title="Sửa thông tin">
-                                    <i class="bi bi-pencil-square"></i>
-                                </button>
+                            <td>10A2</td>
+                            <td><span class="badge bg-info text-dark">Xe đạp</span></td>
+                            <td><span class="badge bg-danger">Không dựng xe đúng nơi</span></td>
+                            <td>Lê Thị B</td>
+                            <td>15/12/2025 13:15</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-info"><i class="bi bi-pencil"></i></button>
                                 <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
                             </td>
-
-
                         </tr>
 
+                        <tr data-name="Phạm Quốc Huy" data-class="11B1">
+                            <td>3</td>
+                            <td>XD-11023</td>
+                            <td>Phạm Quốc Huy</td>
+                            <td>11B1</td>
+                            <td><span class="badge bg-info text-dark">Xe đạp</span></td>
+                            <td><span class="badge bg-warning text-dark">Chở quá người</span></td>
+                            <td>Nguyễn Văn A</td>
+                            <td>16/12/2025 07:15</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-info"><i class="bi bi-pencil"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr data-name="Lê Minh Tâm" data-class="11B2">
+                            <td>4</td>
+                            <td>XD-11456</td>
+                            <td>Lê Minh Tâm</td>
+                            <td>11B2</td>
+                            <td><span class="badge bg-info text-dark">Xe đạp</span></td>
+                            <td><span class="badge bg-danger">Lạng lách</span></td>
+                            <td>Trần Thị Hương</td>
+                            <td>16/12/2025 07:30</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-info"><i class="bi bi-pencil"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr data-name="Nguyễn Hoàng Long" data-class="12C1">
+                            <td>5</td>
+                            <td>XD-99812</td>
+                            <td>Nguyễn Hoàng Long</td>
+                            <td>12C1</td>
+                            <td><span class="badge bg-info text-dark">Xe đạp</span></td>
+                            <td><span class="badge bg-warning text-dark">Không đội mũ</span></td>
+                            <td>Lê Thị B</td>
+                            <td>17/12/2025 06:55</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-info"><i class="bi bi-pencil"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+
+                        <!-- Bạn có thể copy thêm tương tự để đủ 10–12 dòng -->
                     </tbody>
+
                 </table>
 
             </div>

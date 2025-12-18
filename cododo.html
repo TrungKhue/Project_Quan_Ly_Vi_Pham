@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -118,79 +119,128 @@
 
 <body>
 
-<!-- ========================= -->
-<!-- NAVBAR – GIỮ NGUYÊN -->
-<!-- ========================= -->
-<nav class="navbar px-4 py-3">
-    <div class="d-flex w-100 justify-content-between align-items-center">
-        <div class="brand-logo">
-            <i class="bi bi-qr-code-scan"></i> Cờ đỏ – Ghi nhận vi phạm
+    <!-- ========================= -->
+    <!-- NAVBAR – GIỮ NGUYÊN -->
+    <!-- ========================= -->
+    <nav class="navbar px-4 py-3">
+        <div class="d-flex w-100 justify-content-between align-items-center">
+            <div class="brand-logo">
+                <i class="bi bi-qr-code-scan"></i> Cờ đỏ – Ghi nhận vi phạm
+            </div>
+
+            <div class="dropdown">
+                <button class="btn menu-btn" data-bs-toggle="dropdown">
+                    <i class="bi bi-person-circle"></i> Menu
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Thông tin tài khoản</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-lock me-2"></i>Đổi mật khẩu</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right me-2"></i>Đăng
+                            xuất</a></li>
+                </ul>
+            </div>
         </div>
-
-        <div class="dropdown">
-            <button class="btn menu-btn" data-bs-toggle="dropdown">
-                <i class="bi bi-person-circle"></i> Menu
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow">
-                <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Thông tin tài khoản</a></li>
-                <li><a class="dropdown-item" href="#"><i class="bi bi-lock me-2"></i>Đổi mật khẩu</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    </nav>
 
 
-<!-- ========================= -->
-<!-- MAIN CONTENT -->
-<!-- ========================= -->
-<div class="container py-4">
+    <!-- ========================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ========================= -->
+    <div class="container py-4">
 
-    <div class="row g-4">
+        <div class="row g-4">
 
-        <!-- ========================= -->
-        <!-- QUÉT QR -->
-        <!-- ========================= -->
-        <div class="col-lg-6">
-            <div class="card p-4 shadow-sm">
-                <div class="text-center">
-                    <div class="qr-icon mb-3">
-                        <i class="bi bi-qr-code-scan"></i>
+            <!-- ========================= -->
+            <!-- QUÉT QR -->
+            <!-- ========================= -->
+            <div class="col-lg-6">
+                <div class="card p-4 shadow-sm">
+                    <div class="text-center">
+                        <div class="qr-icon mb-3">
+                            <i class="bi bi-qr-code-scan"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2">Quét mã QR</h4>
+                        <p class="text-muted">Quét mã QR trên giấy tờ xe để ghi nhận vi phạm nhanh chóng</p>
+
+                        <button class="btn-qr">
+                            <i class="bi bi-camera-video"></i> Bắt đầu quét QR
+                        </button>
                     </div>
-                    <h4 class="fw-bold mb-2">Quét mã QR</h4>
-                    <p class="text-muted">Quét mã QR trên giấy tờ xe để ghi nhận vi phạm nhanh chóng</p>
+                </div>
+            </div>
 
-                    <button class="btn-qr">
-                        <i class="bi bi-camera-video"></i> Bắt đầu quét QR
+            <!-- ========================= -->
+            <!-- GHI VI PHẠM THỦ CÔNG -->
+            <!-- ========================= -->
+            <div class="col-lg-6">
+                <div class="card p-4 shadow-sm">
+                    <h4 class="card-title"><i class="bi bi-pencil-square me-2"></i>Ghi vi phạm thủ công</h4>
+                    <p class="text-muted mb-3">Nhập thông tin vi phạm chi tiết</p>
+
+                    <div class="mb-3">
+                        <label class="form-label">Mã xe *</label>
+                        <input type="text" class="form-control" placeholder="Vd: 29A-12345">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Tên chủ xe *</label>
+                        <input type="text" class="form-control" placeholder="Nhập họ tên chủ xe">
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Lớp *</label>
+                            <select class="form-select">
+                                <option selected>Chọn lớp</option>
+                                <option>Lớp A</option>
+                                <option>Lớp B</option>
+                                <option>Lớp C</option>
+                                <option>Lớp D</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Loại vi phạm *</label>
+                            <select class="form-select">
+                                <option selected>Chọn loại vi phạm</option>
+                                <option>Để xe sai nơi quy định</option>
+                                <option>Đi học trể</option>
+                                <option>Không đội mũ bảo hiểm</option>
+                                <option>Quá tốc độ</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="btn-submit mt-4">
+                        <i class="bi bi-save"></i> Ghi nhận vi phạm
                     </button>
                 </div>
             </div>
         </div>
 
+
         <!-- ========================= -->
-        <!-- GHI VI PHẠM THỦ CÔNG -->
+        <!-- DANH SÁCH VI PHẠM -->
         <!-- ========================= -->
-        <div class="col-lg-6">
-            <div class="card p-4 shadow-sm">
-                <h4 class="card-title"><i class="bi bi-pencil-square me-2"></i>Ghi vi phạm thủ công</h4>
-                <p class="text-muted mb-3">Nhập thông tin vi phạm chi tiết</p>
+        <div class="card p-4 shadow-sm mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="card-title"><i class="bi bi-table me-2"></i>Danh sách vi phạm</h4>
+                <span class="time-update"><i class="bi bi-clock"></i> Cập nhật: 21:44:24</span>
+            </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Mã xe *</label>
-                    <input type="text" class="form-control" placeholder="Vd: 29A-12345">
-                </div>
+            <table class="table align-middle">
+                <!-- FILTER -->
+                <div class="row g-3 mb-3">
+                    <div class="col-md-4">
+                        <input type="text" id="filterName" class="form-control" placeholder="🔍 Tìm theo tên học sinh">
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Tên chủ xe *</label>
-                    <input type="text" class="form-control" placeholder="Nhập họ tên chủ xe">
-                </div>
-
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Lớp *</label>
-                        <select class="form-select">
-                            <option selected>Chọn lớp</option>
+                    <div class="col-md-3">
+                        <select id="filterClass" class="form-select">
+                            <option value="">-- Tất cả lớp --</option>
                             <option>Lớp A</option>
                             <option>Lớp B</option>
                             <option>Lớp C</option>
@@ -198,80 +248,73 @@
                         </select>
                     </div>
 
-                    <div class="col-md-6">
-                        <label class="form-label">Loại vi phạm *</label>
-                        <select class="form-select">
-                            <option selected>Chọn loại vi phạm</option>
-                            <option>Để xe sai nơi quy định</option>
-                            <option>Đi học trể</option>
-                            <option>Không đội mũ bảo hiểm</option>
-                            <option>Quá tốc độ</option>
-                        </select>
+                    <div class="col-md-3">
+                        <input type="date" id="filterDate" class="form-control">
+                    </div>
+
+                    <div class="col-md-2 d-grid">
+                        <button class="btn btn-primary" onclick="filterViolations()">
+                            <i class="bi bi-funnel"></i> Lọc
+                        </button>
                     </div>
                 </div>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã xe</th>
+                        <th>Tên chủ xe</th>
+                        <th>Học sinh lớp</th>
+                        <th>Loại vi phạm</th>
+                        <th>Thời gian</th>
+                    </tr>
+                </thead>
 
-                <button class="btn-submit mt-4">
-                    <i class="bi bi-save"></i> Ghi nhận vi phạm
-                </button>
-            </div>
+                <tbody id="violationTable">
+
+                    <tr class="viol-row" data-name="Nguyễn Văn An" data-class="Lớp A" data-date="2024-12-15">
+                        <td>1</td>
+                        <td>XE001234</td>
+                        <td>Nguyễn Văn An</td>
+                        <td><span class="badge-type">Lớp A</span></td>
+                        <td><span class="badge-violation">Để xe sai nơi quy định</span></td>
+                        <td>15/12/2025 08:10:20</td>
+                    </tr>
+
+                    <tr class="viol-row" data-name="Lê Minh Tuấn" data-class="Lớp C" data-date="2024-12-15">
+                        <td>2</td>
+                        <td>XD102345</td>
+                        <td>Lê Minh Tuấn</td>
+                        <td><span class="badge-type">Lớp C</span></td>
+                        <td><span class="badge-violation">Đi học trễ</span></td>
+                        <td>15/12/2025 09:05:40</td>
+                    </tr>
+
+                    <tr class="viol-row" data-name="Nguyễn Hoàng Long" data-class="Lớp D" data-date="2024-12-14">
+                        <td>3</td>
+                        <td>XD998877</td>
+                        <td>Nguyễn Hoàng Long</td>
+                        <td><span class="badge-type">Lớp D</span></td>
+                        <td><span class="badge-violation">Không đội mũ bảo hiểm</span></td>
+                        <td>14/12/2025 16:45:12</td>
+                    </tr>
+
+                    <tr class="viol-row" data-name="Trần Thị Hương" data-class="Lớp B" data-date="2024-12-13">
+                        <td>4</td>
+                        <td>XM55890</td>
+                        <td>Trần Thị Hương</td>
+                        <td><span class="badge-type">Lớp B</span></td>
+                        <td><span class="badge-violation">Quá tốc độ</span></td>
+                        <td>13/12/2025 10:22:33</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
         </div>
+
     </div>
 
-
-    <!-- ========================= -->
-    <!-- DANH SÁCH VI PHẠM -->
-    <!-- ========================= -->
-    <div class="card p-4 shadow-sm mt-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h4 class="card-title"><i class="bi bi-table me-2"></i>Danh sách vi phạm</h4>
-            <span class="time-update"><i class="bi bi-clock"></i> Cập nhật: 21:44:24</span>
-        </div>
-
-        <table class="table align-middle">
-            <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>Mã xe</th>
-                    <th>Tên chủ xe</th>
-                    <th>Học sinh lớp</th>
-                    <th>Loại vi phạm</th>
-                    <th>Thời gian</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr class="viol-row">
-                    <td>1</td>
-                    <td>29A-12345</td>
-                    <td>Trần Văn Bình</td>
-                    <td><span class="badge-type">Lớp A</span></td>
-                    <td><span class="badge-violation">Quá tốc độ</span></td>
-                    <td>15/12/2024 14:30:25</td>
-                </tr>
-
-                <tr class="viol-row">
-                    <td>2</td>
-                    <td>30B-67890</td>
-                    <td>Nguyễn Thị Lan</td>
-                    <td><span class="badge-type">Lớp B</span></td>
-                    <td><span class="badge-violation">Không đội mũ bảo hiểm</span></td>
-                    <td>15/12/2024 13:15:10</td>
-                </tr>
-
-                <tr class="viol-row">
-                    <td>3</td>
-                    <td>51C-24680</td>
-                    <td>Lê Văn Minh</td>
-                    <td><span class="badge-type">Lớp C</span></td>
-                    <td><span class="badge-violation">Đi học trể</span></td>
-                    <td>15/12/2024 12:45:30</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
