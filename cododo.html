@@ -16,7 +16,6 @@
             font-family: "Segoe UI", sans-serif;
         }
 
-        /* NAVBAR */
         .navbar {
             background: #ffffff;
             border-bottom: 1px solid #e5e8ec;
@@ -36,12 +35,6 @@
             color: #008cff;
         }
 
-        .menu-btn {
-            background: #ffffff;
-            border: 1px solid #d0d5df;
-        }
-
-        /* CARDS */
         .card {
             border: none;
             border-radius: 14px;
@@ -49,11 +42,10 @@
 
         .card-title {
             font-size: 20px;
-            color: #2b3a67;
             font-weight: 600;
+            color: #2b3a67;
         }
 
-        /* QR */
         .qr-icon {
             width: 70px;
             height: 70px;
@@ -67,19 +59,19 @@
             margin: auto;
         }
 
-        .btn-qr {
+        .btn-main {
             width: 100%;
             background: #009d63;
+            color: white;
             border: none;
             padding: 12px;
-            color: white;
-            font-weight: 500;
             border-radius: 10px;
+            font-weight: 500;
         }
 
-        /* TABLE */
-        .table thead {
-            background: #f0f4fa;
+        #qr-reader {
+            display: none;
+            margin-top: 15px;
         }
 
         .badge-type {
@@ -95,228 +87,199 @@
             padding: 5px 10px;
             border-radius: 6px;
         }
-
-        .time-update {
-            font-size: 14px;
-            color: #727b8a;
-        }
-
-        .viol-row {
-            border-bottom: 1px solid #eef0f4;
-        }
-
-        .btn-submit {
-            width: 100%;
-            background: #009d63;
-            color: white;
-            padding: 12px;
-            border-radius: 10px;
-            font-weight: 500;
-            border: none;
-        }
     </style>
 </head>
 
 <body>
 
-    <!-- ========================= -->
-    <!-- NAVBAR – GIỮ NGUYÊN -->
-    <!-- ========================= -->
+    <!-- NAVBAR -->
     <nav class="navbar px-4 py-3">
         <div class="d-flex w-100 justify-content-between align-items-center">
             <div class="brand-logo">
                 <i class="bi bi-qr-code-scan"></i> Cờ đỏ – Ghi nhận vi phạm
             </div>
-
-            <div class="dropdown">
-                <button class="btn menu-btn" data-bs-toggle="dropdown">
-                    <i class="bi bi-person-circle"></i> Menu
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end shadow">
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Thông tin tài khoản</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-lock me-2"></i>Đổi mật khẩu</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right me-2"></i>Đăng
-                            xuất</a></li>
-                </ul>
-            </div>
         </div>
     </nav>
 
-
-    <!-- ========================= -->
-    <!-- MAIN CONTENT -->
-    <!-- ========================= -->
+    <!-- MAIN -->
     <div class="container py-4">
-
         <div class="row g-4">
 
-            <!-- ========================= -->
-            <!-- QUÉT QR -->
-            <!-- ========================= -->
+            <!-- QR -->
             <div class="col-lg-6">
-                <div class="card p-4 shadow-sm">
-                    <div class="text-center">
-                        <div class="qr-icon mb-3">
-                            <i class="bi bi-qr-code-scan"></i>
-                        </div>
-                        <h4 class="fw-bold mb-2">Quét mã QR</h4>
-                        <p class="text-muted">Quét mã QR trên giấy tờ xe để ghi nhận vi phạm nhanh chóng</p>
-
-                        <a href="https://trungkhue.github.io/test-qr/cododo.html"
-                            class="btn-qr d-inline-block text-center">
-                            <i class="bi bi-camera-video"></i> Bấm vào để quét QR
-                        </a>
-
+                <div class="card p-4 shadow-sm text-center">
+                    <div class="qr-icon mb-3">
+                        <i class="bi bi-qr-code-scan"></i>
                     </div>
+                    <h4 class="fw-bold">Quét mã QR</h4>
+                    <p class="text-muted">Quét QR để tự động điền thông tin</p>
+
+                    <button class="btn-main" id="btnScanQR">
+                        <i class="bi bi-camera-video"></i> Bắt đầu quét QR
+                    </button>
+
+                    <div id="qr-reader"></div>
                 </div>
             </div>
 
-            <!-- ========================= -->
-            <!-- GHI VI PHẠM THỦ CÔNG -->
-            <!-- ========================= -->
+            <!-- FORM CHUNG -->
             <div class="col-lg-6">
                 <div class="card p-4 shadow-sm">
-                    <h4 class="card-title"><i class="bi bi-pencil-square me-2"></i>Ghi vi phạm thủ công</h4>
-                    <p class="text-muted mb-3">Nhập thông tin vi phạm chi tiết</p>
+                    <h4 class="card-title mb-3">
+                        <i class="bi bi-pencil-square me-2"></i>Ghi vi phạm
+                    </h4>
 
                     <div class="mb-3">
                         <label class="form-label">Mã xe *</label>
-                        <input type="text" class="form-control" placeholder="Vd: 29A-12345">
+                        <input type="text" id="studentId" class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Tên chủ xe *</label>
-                        <input type="text" class="form-control" placeholder="Nhập họ tên chủ xe">
+                        <label class="form-label">Tên học sinh *</label>
+                        <input type="text" id="studentName" class="form-control">
                     </div>
 
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Lớp *</label>
-                            <select class="form-select">
-                                <option selected>Chọn lớp</option>
-                                <option>Lớp A</option>
-                                <option>Lớp B</option>
-                                <option>Lớp C</option>
-                                <option>Lớp D</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label">Loại vi phạm *</label>
-                            <select class="form-select">
-                                <option selected>Chọn loại vi phạm</option>
-                                <option>Để xe sai nơi quy định</option>
-                                <option>Đi học trể</option>
-                                <option>Không đội mũ bảo hiểm</option>
-                                <option>Quá tốc độ</option>
-                            </select>
-                        </div>
+                    <div class="mb-3">
+                        <label class="form-label">Lớp *</label>
+                        <input type="text" id="studentClass" class="form-control">
                     </div>
 
-                    <button class="btn-submit mt-4">
-                        <i class="bi bi-save"></i> Ghi nhận vi phạm
+                    <div class="mb-3">
+                        <label class="form-label">Loại vi phạm *</label>
+                        <select id="violationType" class="form-select">
+                            <option value="">Chọn loại vi phạm</option>
+                            <option>Để xe sai nơi quy định</option>
+                            <option>Không đội mũ bảo hiểm</option>
+                            <option>Đi học trễ</option>
+                        </select>
+                    </div>
+
+                    <button type="button" class="btn-main" id="btnSubmit">
+                        ✔ Ghi nhận vi phạm
                     </button>
                 </div>
             </div>
         </div>
 
-
-        <!-- ========================= -->
-        <!-- DANH SÁCH VI PHẠM -->
-        <!-- ========================= -->
+        <!-- TABLE -->
         <div class="card p-4 shadow-sm mt-4">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="card-title"><i class="bi bi-table me-2"></i>Danh sách vi phạm</h4>
-                <span class="time-update"><i class="bi bi-clock"></i> Cập nhật: 21:44:24</span>
-            </div>
+            <h4 class="card-title mb-3">
+                <i class="bi bi-table me-2"></i>Danh sách vi phạm
+            </h4>
 
             <table class="table align-middle">
-                <!-- FILTER -->
-                <div class="row g-3 mb-3">
-                    <div class="col-md-4">
-                        <input type="text" id="filterName" class="form-control" placeholder="🔍 Tìm theo tên học sinh">
-                    </div>
-
-                    <div class="col-md-3">
-                        <select id="filterClass" class="form-select">
-                            <option value="">-- Tất cả lớp --</option>
-                            <option>Lớp A</option>
-                            <option>Lớp B</option>
-                            <option>Lớp C</option>
-                            <option>Lớp D</option>
-                        </select>
-                    </div>
-
-                    <div class="col-md-3">
-                        <input type="date" id="filterDate" class="form-control">
-                    </div>
-
-                    <div class="col-md-2 d-grid">
-                        <button class="btn btn-primary" onclick="filterViolations()">
-                            <i class="bi bi-funnel"></i> Lọc
-                        </button>
-                    </div>
-                </div>
                 <thead>
                     <tr>
                         <th>STT</th>
                         <th>Mã xe</th>
-                        <th>Tên chủ xe</th>
-                        <th>Học sinh lớp</th>
-                        <th>Loại vi phạm</th>
+                        <th>Tên</th>
+                        <th>Lớp</th>
+                        <th>Vi phạm</th>
                         <th>Thời gian</th>
                     </tr>
                 </thead>
-
-                <tbody id="violationTable">
-
-                    <tr class="viol-row" data-name="Nguyễn Văn An" data-class="Lớp A" data-date="2024-12-15">
-                        <td>1</td>
-                        <td>XE001234</td>
-                        <td>Nguyễn Văn An</td>
-                        <td><span class="badge-type">Lớp A</span></td>
-                        <td><span class="badge-violation">Để xe sai nơi quy định</span></td>
-                        <td>15/12/2025 08:10:20</td>
-                    </tr>
-
-                    <tr class="viol-row" data-name="Lê Minh Tuấn" data-class="Lớp C" data-date="2024-12-15">
-                        <td>2</td>
-                        <td>XD102345</td>
-                        <td>Lê Minh Tuấn</td>
-                        <td><span class="badge-type">Lớp C</span></td>
-                        <td><span class="badge-violation">Đi học trễ</span></td>
-                        <td>15/12/2025 09:05:40</td>
-                    </tr>
-
-                    <tr class="viol-row" data-name="Nguyễn Hoàng Long" data-class="Lớp D" data-date="2024-12-14">
-                        <td>3</td>
-                        <td>XD998877</td>
-                        <td>Nguyễn Hoàng Long</td>
-                        <td><span class="badge-type">Lớp D</span></td>
-                        <td><span class="badge-violation">Không đội mũ bảo hiểm</span></td>
-                        <td>14/12/2025 16:45:12</td>
-                    </tr>
-
-                    <tr class="viol-row" data-name="Trần Thị Hương" data-class="Lớp B" data-date="2024-12-13">
-                        <td>4</td>
-                        <td>XM55890</td>
-                        <td>Trần Thị Hương</td>
-                        <td><span class="badge-type">Lớp B</span></td>
-                        <td><span class="badge-violation">Quá tốc độ</span></td>
-                        <td>13/12/2025 10:22:33</td>
-                    </tr>
-
-                </tbody>
-
+                <tbody id="violationTable"></tbody>
             </table>
         </div>
-
     </div>
 
+    <!-- MODAL -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center p-4">
+                <div class="text-success fs-1 mb-2">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+                <h4 class="fw-bold">Ghi nhận thành công</h4>
+                <button class="btn btn-success mt-3" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+
+    <script>
+        const btnScan = document.getElementById("btnScanQR");
+        const reader = document.getElementById("qr-reader");
+        const btnSubmit = document.getElementById("btnSubmit");
+        const table = document.getElementById("violationTable");
+
+        let stt = 1;
+        let qr;
+
+        // DATA DEMO
+        const students = {
+            "XE001234": { name: "Nguyễn Văn An", class: "Lớp 11A" },
+            "XD102345": { name: "Lê Minh Tuấn", class: "Lớp 12C" },
+            "XD998877": { name: "Nguyễn Hoàng Long", class: "Lớp 12B" }
+        };
+
+        // QR
+        btnScan.onclick = async () => {
+            reader.style.display = "block";
+            qr = new Html5Qrcode("qr-reader");
+
+            try {
+                await qr.start(
+                    { facingMode: "environment" },
+                    { fps: 10, qrbox: 250 },
+                    (text) => {
+                        qr.stop();
+                        reader.style.display = "none";
+
+                        const st = students[text];
+                        if (!st) {
+                            alert("Không tìm thấy dữ liệu");
+                            return;
+                        }
+
+                        studentId.value = text;
+                        studentName.value = st.name;
+                        studentClass.value = st.class;
+                    }
+                );
+            } catch {
+                alert("Không mở được camera");
+            }
+        };
+
+        // GHI NHẬN (CHUNG QR + TAY)
+        btnSubmit.onclick = () => {
+            const id = studentId.value.trim();
+            const name = studentName.value.trim();
+            const cls = studentClass.value.trim();
+            const violation = violationType.value;
+
+            if (!id || !name || !cls || !violation) {
+                alert("Vui lòng nhập hoặc quét đầy đủ thông tin");
+                return;
+            }
+
+            const time = new Date().toLocaleString("vi-VN");
+
+            const row = table.insertRow(0);
+            row.innerHTML = `
+                <td>${stt++}</td>
+                <td>${id}</td>
+                <td>${name}</td>
+                <td><span class="badge-type">${cls}</span></td>
+                <td><span class="badge-violation">${violation}</span></td>
+                <td>${time}</td>
+            `;
+
+            new bootstrap.Modal(
+                document.getElementById("successModal")
+            ).show();
+
+            studentId.value = "";
+            studentName.value = "";
+            studentClass.value = "";
+            violationType.value = "";
+        };
+    </script>
+
 </body>
 
 </html>
