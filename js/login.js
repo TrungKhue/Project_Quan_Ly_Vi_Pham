@@ -83,45 +83,34 @@ const handleLogin = async function (event) {
 loginForm?.addEventListener("submit", handleLogin);
 
 
-// =======================
-// ĐĂNG KÝ
-// =======================
-const registerForm = document.getElementById("register-form");
+// ================== ĐĂNG KÝ ==================
+document.getElementById("register-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-const handleRegister = async function (event) {
-    event.preventDefault();
-
-    let username = document.querySelector("#username").value.trim();
-    let email = document.querySelector("#email").value.trim();
-    let password = document.querySelector("#password").value.trim();
-
-    // Mặc định role_id = 3 (thành viên)
-    let role_id = 3;
-
-    if (!username || !email || !password) {
-        alert("Vui lòng nhập đầy đủ dữ liệu!");
-        return;
-    }
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
     try {
-        // Tạo tài khoản Auth
-        const res = await createUserWithEmailAndPassword(auth, email, password);
-        const uid = res.user.uid;
+        // 1️⃣ Tạo user trong Authentication
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const uid = userCredential.user.uid;
 
-        // Lưu user vào Firestore
+        // 2️⃣ Lưu thông tin user vào Firestore (KHÔNG LƯU PASSWORD)
         await setDoc(doc(db, "users", uid), {
-            username,
-            email,
-            role_id
+            username: username,
+            email: email,
+            role_id: 3,          // 1-admin | 2-codo | 3-student
+            active: true,
+            created_at: new Date()
         });
 
         alert("Đăng ký thành công!");
-        container.classList.remove("active");
+        location.reload();
 
-    } catch (err) {
-        alert("Lỗi đăng ký: " + err.message);
-        console.error(err);
+    } catch (error) {
+        alert(error.message);
     }
-};
+});
 
 registerForm?.addEventListener("submit", handleRegister);
